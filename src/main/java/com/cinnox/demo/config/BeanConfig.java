@@ -13,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.cinnox.demo.adaptor.LineMessageBackApaptor;
 import com.cinnox.demo.adaptor.LineMessageConsumerAdaptor;
+import com.cinnox.demo.adaptor.LineMessageQueryAdaptor;
 
 @Configuration
 public class BeanConfig {
@@ -25,6 +26,11 @@ public class BeanConfig {
 	@Bean
 	public LineMessageBackApaptor lineMessageBackApaptor() {
 		return new LineMessageBackApaptor();
+	}
+	
+	@Bean
+	public LineMessageQueryAdaptor lineMessageQueryAdaptor() {
+		return new LineMessageQueryAdaptor();
 	}
 	
 	@Bean

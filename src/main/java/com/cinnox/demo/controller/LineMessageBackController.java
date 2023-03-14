@@ -13,7 +13,7 @@ import com.cinnox.demo.request.SendBackRq;
 import com.cinnox.demo.service.LineMessagePushService;
 
 @RestController
-@RequestMapping("line/message")
+@RequestMapping("line/message/back")
 public class LineMessageBackController {
 	
 	@Autowired
@@ -22,8 +22,8 @@ public class LineMessageBackController {
 	@Autowired
 	private LineMessagePushService lineMessagePushService;
 	
-	@PostMapping("/send/back")
-	public void sendBack(@RequestBody SendBackRq rq) throws LineMessagePushException {
+	@PostMapping(value="send",consumes = {"application/*; charset=UTF-8"},produces="application/json;charset=UTF-8")
+	public void send(@RequestBody SendBackRq rq) throws LineMessagePushException {
 		LineMessageBackRq transRq = lineMessageBackApaptor.transLineMessageBackRq(rq);
 		lineMessagePushService.push(transRq);
 	}
